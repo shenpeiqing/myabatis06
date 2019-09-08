@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--使用外部的数据库信息的配置文件 -->
+    <properties resource="jdbcConfig.properties"></properties>
+    <!--给此包下所有的实体类，起别名-->
+    <typeAliases>
+        <package name="org.westos.domain"/>
+    </typeAliases>
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--事务管理器-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置数据源-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--扫描此包下的所有接口-->
+        <package name="org.westos.dao"/>
+    </mappers>
+</configuration>
